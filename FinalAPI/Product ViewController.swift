@@ -52,34 +52,33 @@ class Product_ViewController: UIViewController {
     
     @IBOutlet weak var categoryLabel: UILabel!
     
-    var product: Products?
+    var article: Articles?
      
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        nameLabel.text = product?.title
+        nameLabel.text = article?.title
         
-        descriptionLabel.text = product?.description
-        descriptionLabel.numberOfLines = 0
+//        descriptionLabel.text = article?.description
+//        descriptionLabel.numberOfLines = 0
 
         
         
-        priceLabel.text = "price: \((product?.price)!)"
-        discountLabel.text = "discount: \((product?.discountPercentage)!)"
-        stockLabel.text = "stock: \((product?.stock)!)"
-        brandLabel.text = "brand: \((product?.brand)!)"
-        categoryLabel.text = "category: \((product?.category)!)"
+//        priceLabel.text = "price: \((product?.price)!)"
+//        discountLabel.text = "discount: \((product?.discountPercentage)!)"
+//        stockLabel.text = "stock: \((product?.stock)!)"
+//        brandLabel.text = "brand: \((product?.brand)!)"
+//        categoryLabel.text = "category: \((product?.category)!)"
         
         
         
         
-        let urlString = (product?.images)!
-        for (index, i) in urlString.enumerated() {
-            let urlImage = URL(string: urlString[0])
-            print(urlImage!)
-            imageView?.downloaded(from: urlImage!)
-            
-        }
+//        let urlString = (article?.images)!{
+//            let urlImage = URL(string: urlString)
+//            print(urlImage!)
+//            imageView?.downloaded(from: urlImage!)
+//
+//        }
         
         
           

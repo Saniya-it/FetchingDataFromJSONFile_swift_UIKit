@@ -12,7 +12,7 @@ class ViewController: UITableViewController {
     
     let reuseIdentifier = "PhoneCell"
     
-    var myProducts : [Products]? {
+    var myArticles : [Articles]? {
         didSet {
             DispatchQueue.main.async { [self] in
             tableView.reloadData()
@@ -27,17 +27,17 @@ class ViewController: UITableViewController {
         // Do any additional setup after loading the view.
         let phoneManager = PhoneManager()
         
-        phoneManager.fetchPhones { (products) in
+        phoneManager.fetchPhones { (articles) in
             
 //            DispatchQueue.main.async {
 //                [self] in
 //                self.navigationItem = movie.title
         
             DispatchQueue.main.async{ [self] in
-                self.navigationItem.title = "Products"
+                self.navigationItem.title = "Articles"
                 
             }
-            self.myProducts  = products.products
+            self.myArticles  = articles.articles
 //            print(products.products)
 //            print(products.limit)
 //            print(products.skip)
@@ -59,7 +59,7 @@ class ViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? Product_ViewController {
-            destination.product = myProducts![(tableView.indexPathForSelectedRow?.row)!]
+            destination.article = myArticles![(tableView.indexPathForSelectedRow?.row)!]
         }
     }
 
@@ -79,13 +79,13 @@ extension ViewController {
 //
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return myProducts?.count ?? 0
+        return myArticles?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
         
-         let product = myProducts?[indexPath.row]
+         let product = myArticles?[indexPath.row]
         //cell.textLabel?.text = "\(product.title) -- \(product.id )"
         cell.textLabel?.text = product?.title
          
